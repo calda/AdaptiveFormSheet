@@ -84,6 +84,7 @@ public class AFSPresentationController : UIPresentationController {
     
     @objc private func keyboardFrameWillChange(notification: NSNotification) {
         guard let containerView = self.containerView else { return }
+        guard let presentedView = self.presentedView else { return }
         guard let userInfo = notification.userInfo else { return }
         guard let keyboardStartFrame = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
         guard let keyboardEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
@@ -110,7 +111,7 @@ public class AFSPresentationController : UIPresentationController {
                 
                 //if the keyboard changed size, calculate where the firstResponder will go
                 if (keyboardStartFrame != keyboardEndFrame) {
-                    let offsetByKeyboard = self.frameOfPresentedViewInContainerView.origin.y - frameCenteredInAvailableSpace.origin.y
+                    let offsetByKeyboard = presentedView.frame.origin.y - frameCenteredInAvailableSpace.origin.y
                     firstResponderRectInContainer.origin.y -= offsetByKeyboard
                 }
                 
@@ -119,15 +120,12 @@ public class AFSPresentationController : UIPresentationController {
                     
                     func makeResponderVisible(offset: CGFloat, usingOperator op: (CGFloat, CGFloat) -> CGFloat) {
                         let distanceToMove = abs(offset) + 25
-                        let newOrigin = CGPoint(x: frameCenteredInAvailableSpace.origin.x,
-                                                y: op(frameCenteredInAvailableSpace.origin.y, distanceToMove))
-                        
-                        newFrame = CGRect(origin: newOrigin, size: self.contentSize)
+                        newFrame.origin.y = op(frameCenteredInAvailableSpace.origin.y, distanceToMove)
                     }
                     
-                    if (firstResponderRectInContainer.minY < 20 /* if under status bar */) {
-                        makeResponderVisible(offset: firstResponderRectInContainer.minY, usingOperator: +)
-                    } else /* if under keyboard */ {
+                    if (firstResponderRectInContainer.minY < 0) { //if above status bar
+                        makeResponderVisible(offset: firstResponderRectInContainer.minY - 20, usingOperator: +)
+                    } else { //if under keyboard
                         makeResponderVisible(offset: keyboardTop - firstResponderRectInContainer.maxY, usingOperator: -)
                     }
                 }

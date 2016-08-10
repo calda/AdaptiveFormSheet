@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11191" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11191" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wFk-Ox-GoW">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11156"/>
@@ -7,7 +7,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="e3Y-tb-hzE">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C96-zK-pq2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="wFk-Ox-GoW" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XLu-kn-AyK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="kT7-to-U98"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-1060" y="337"/>
+        </scene>
+        <!--Adaptable Form Sheet Demo-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Demo_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -58,12 +74,13 @@
                             <constraint firstAttribute="trailing" secondItem="gT7-dd-e5l" secondAttribute="trailing" id="3uH-jg-kad"/>
                             <constraint firstItem="ZYy-xU-Vgt" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="GpH-ra-27Y"/>
                             <constraint firstItem="ZYy-xU-Vgt" firstAttribute="top" secondItem="gT7-dd-e5l" secondAttribute="bottom" id="HdE-Jj-Mlt"/>
-                            <constraint firstItem="gT7-dd-e5l" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="L1S-RA-XjT"/>
                             <constraint firstItem="gT7-dd-e5l" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="iwR-hp-0g6"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZYy-xU-Vgt" secondAttribute="bottom" id="pAm-eb-zKp"/>
+                            <constraint firstItem="gT7-dd-e5l" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="rML-la-s7y"/>
                             <constraint firstAttribute="trailing" secondItem="ZYy-xU-Vgt" secondAttribute="trailing" id="y66-Bu-YYH"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Adaptable Form Sheet Demo" id="sUR-uu-3Ry"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -78,7 +95,7 @@
                         <viewControllerLayoutGuide type="bottom" id="s9A-dQ-3ty"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="V1t-Tj-0SS">
-                        <rect key="frame" x="0.0" y="0.0" width="300" height="500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UZd-LT-Dff">
@@ -136,9 +153,9 @@
                             <constraint firstAttribute="bottom" secondItem="UZd-LT-Dff" secondAttribute="bottom" id="w0v-JY-9rQ"/>
                         </constraints>
                     </view>
-                    <value key="contentSizeForViewInPopover" type="size" width="300" height="500"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="300" height="400"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="300" height="500"/>
+                    <size key="freeformSize" width="300" height="400"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3X-ka-JnO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
