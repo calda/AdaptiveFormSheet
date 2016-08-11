@@ -8,14 +8,14 @@
 
 import UIKit
 
-class AFSModalViewController : UIViewController, UIViewControllerTransitioningDelegate {
+public class AFSModalViewController : UIViewController, UIViewControllerTransitioningDelegate {
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupForTransition()
     }
     
-    required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    public required override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setupForTransition()
     }
@@ -25,12 +25,16 @@ class AFSModalViewController : UIViewController, UIViewControllerTransitioningDe
         self.transitioningDelegate = self
     }
     
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return AFSPresentationController(presentedViewController: presented, presenting: presenting)
     }
     
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return AFSAnimatedTransitioning()
+    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AFSAnimatedTransitioning(direction: .presenting)
+    }
+    
+    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return AFSAnimatedTransitioning(direction: .dismissing)
     }
     
 }

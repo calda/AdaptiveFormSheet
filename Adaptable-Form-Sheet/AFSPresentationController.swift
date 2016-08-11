@@ -17,13 +17,25 @@ public class AFSPresentationController : UIPresentationController {
         return self.presentedViewController.preferredContentSize
     }
     
-    override public var frameOfPresentedViewInContainerView: CGRect {
-        return rect(withSize: self.contentSize, centeredInRect: self.presentingViewController.view.bounds)
+    var statusBarHeight: CGFloat {
+        return UIApplication.shared.statusBarFrame.height
     }
     
-    private func rect(withSize size: CGSize, centeredInRect rect: CGRect) -> CGRect {
-        let destinationOrigin = CGPoint(x: (rect.size.width - size.width) / 2,
-                                        y: (rect.size.height - size.height) / 2)
+    override public var frameOfPresentedViewInContainerView: CGRect {
+        let availableSpace = availableSpaceWithPadding(top: statusBarHeight, bottom: 0)
+        return rect(withSize: self.contentSize, centeredIn: availableSpace)
+    }
+    
+    private func availableSpaceWithPadding(top: CGFloat, bottom: CGFloat) -> CGRect {
+        var available = self.presentingViewController.view.bounds
+        available.origin.y += top
+        available.size.height -= (top + bottom)
+        return available
+    }
+    
+    private func rect(withSize size: CGSize, centeredIn container: CGRect) -> CGRect {
+        let destinationOrigin = CGPoint(x: container.midX - (size.width / 2),
+                                        y: container.midY - (size.height / 2))
         return CGRect(origin: destinationOrigin, size: size)
     }
     
@@ -33,6 +45,30 @@ public class AFSPresentationController : UIPresentationController {
     var scrim: UIView?
     
     public override func presentationTransitionWillBegin() {
+        createScrim()
+        
+        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
+            self.scrim?.alpha = 0.3
+        }, completion: { _ in
+            self.subscribeToKeyboardNotifications()
+        });
+    }
+    
+    public override func dismissalTransitionWillBegin() {
+        self.presentedViewController.view.endEditing(true) //dismiss keyboard
+        
+        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
+            self.scrim?.alpha = 0.0
+        }, completion: { _ in
+            self.unsubscribeFromKeyboardNotifications()
+            self.scrim?.removeFromSuperview()
+        });
+    }
+    
+    
+    //MARK: - Scrim
+    
+    private func createScrim() {
         guard let containerView = self.containerView else { return }
         self.scrim = UIView(frame: containerView.bounds);
         guard let scrim = self.scrim else { return }
@@ -41,22 +77,12 @@ public class AFSPresentationController : UIPresentationController {
         scrim.alpha = 0.0
         self.containerView?.addSubview(scrim)
         
-        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
-            scrim.alpha = 0.3
-        }, completion: { _ in
-            self.subscribeToKeyboardNotifications()
-        });
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.scrimTapped))
+        scrim.addGestureRecognizer(tapRecognizer)
     }
     
-    public override func dismissalTransitionWillBegin() {
-        guard let scrim = self.scrim else { return }
-        
-        presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
-            scrim.alpha = 0.0
-        }, completion: { _ in
-            self.unsubscribeFromKeyboardNotifications()
-            scrim.removeFromSuperview()
-        });
+    @objc private func scrimTapped() {
+        self.presentedViewController.dismiss(animated: true, completion: nil)
     }
     
     
@@ -95,10 +121,9 @@ public class AFSPresentationController : UIPresentationController {
         
         let keyboardTop = keyboardEndFrame.minY
         let keyboardHeight = containerView.frame.height - keyboardTop
-        let availableSize = CGSize(width: containerView.frame.width, height: containerView.frame.height - keyboardHeight)
-        let availableSpace = CGRect(origin: CGPoint.zero, size: availableSize)
+        let availableSpace = availableSpaceWithPadding(top: statusBarHeight, bottom: keyboardHeight)
         
-        let frameCenteredInAvailableSpace = rect(withSize: self.contentSize, centeredInRect: availableSpace)
+        let frameCenteredInAvailableSpace = rect(withSize: self.contentSize, centeredIn: availableSpace)
         newFrame = frameCenteredInAvailableSpace
 
         //if content can exist unclipped above the keyboard, center it in that space
@@ -118,15 +143,14 @@ public class AFSPresentationController : UIPresentationController {
                 //if the first responder won't be visible, offset the origin
                 if !(availableSpace.contains(firstResponderRectInContainer)) {
                     
-                    func makeResponderVisible(offset: CGFloat, usingOperator op: (CGFloat, CGFloat) -> CGFloat) {
-                        let distanceToMove = abs(offset) + 25
-                        newFrame.origin.y = op(frameCenteredInAvailableSpace.origin.y, distanceToMove)
+                    if (firstResponderRectInContainer.minY < availableSpace.minY) { //if above status bar
+                        let offset = firstResponder.bounds.minY
+                        newFrame.origin.y = offset + statusBarHeight + 5
                     }
                     
-                    if (firstResponderRectInContainer.minY < 0) { //if above status bar
-                        makeResponderVisible(offset: firstResponderRectInContainer.minY - 20, usingOperator: +)
-                    } else { //if under keyboard
-                        makeResponderVisible(offset: keyboardTop - firstResponderRectInContainer.maxY, usingOperator: -)
+                    else { //if under keyboard
+                        let offset = abs(keyboardTop - firstResponderRectInContainer.maxY)
+                        newFrame.origin.y -= (offset + 25)
                     }
                 }
             }

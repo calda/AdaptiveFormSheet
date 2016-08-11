@@ -10,7 +10,6 @@
         <!--Navigation Controller-->
         <scene sceneID="e3Y-tb-hzE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="C96-zK-pq2" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="wFk-Ox-GoW" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XLu-kn-AyK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -20,6 +19,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="kT7-to-U98"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C96-zK-pq2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1060" y="337"/>
         </scene>
@@ -89,7 +89,7 @@
         <!--Modal-->
         <scene sceneID="SIC-c4-nXx">
             <objects>
-                <viewController storyboardIdentifier="Modal" title="Modal" id="G8J-HK-4VY" customClass="AFSModalViewController" customModule="AdaptableFormSheet" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Modal" title="Modal" id="G8J-HK-4VY" customClass="ModalViewController" customModule="Demo_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tdu-bQ-4hl"/>
                         <viewControllerLayoutGuide type="bottom" id="s9A-dQ-3ty"/>
@@ -100,46 +100,78 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UZd-LT-Dff">
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVf-lp-lCo">
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVf-lp-lCo">
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Text Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIf-dD-Ga4">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Text Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QIf-dD-Ga4">
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="nextPressed:" destination="G8J-HK-4VY" eventType="primaryActionTriggered" id="BKB-gb-q4B"/>
+                                        </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Text Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97g-jb-hgZ">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Text Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="97g-jb-hgZ">
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="nextPressed:" destination="G8J-HK-4VY" eventType="primaryActionTriggered" id="q4l-oT-BDL"/>
+                                        </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Text Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lap-OA-QMY">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Text Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lap-OA-QMY">
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="nextPressed:" destination="G8J-HK-4VY" eventType="primaryActionTriggered" id="L2G-sf-8RA"/>
+                                        </connections>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Text Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Yh-dX-Jtu">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Text Field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Yh-dX-Jtu">
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="nextPressed:" destination="G8J-HK-4VY" eventType="primaryActionTriggered" id="N8m-8S-xGy"/>
+                                        </connections>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07O-jj-hN9">
+                                        <state key="normal" title="resign responder">
+                                            <color key="titleColor" red="0.21665365989999999" green="0.56997710469999996" blue="0.76944422720000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resignResponder:" destination="G8J-HK-4VY" eventType="touchUpInside" id="tc2-O9-fVk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oZw-Xr-a3g">
+                                        <state key="normal" title="dismiss modal">
+                                            <color key="titleColor" red="0.21665365989999999" green="0.56997710469999996" blue="0.76944422720000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dismiss:" destination="G8J-HK-4VY" eventType="touchUpInside" id="ePi-cA-0Eg"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.99817734956741333" green="0.99814736843109131" blue="0.99816441535949707" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="oZw-Xr-a3g" firstAttribute="top" secondItem="QIf-dD-Ga4" secondAttribute="bottom" constant="29" id="2hb-GC-wjV"/>
                                     <constraint firstItem="Lap-OA-QMY" firstAttribute="centerX" secondItem="UZd-LT-Dff" secondAttribute="centerX" id="61G-hf-alR"/>
                                     <constraint firstItem="97g-jb-hgZ" firstAttribute="width" secondItem="QIf-dD-Ga4" secondAttribute="width" id="6L9-YI-fRH"/>
                                     <constraint firstItem="4Yh-dX-Jtu" firstAttribute="top" secondItem="UZd-LT-Dff" secondAttribute="top" constant="15" id="AbB-TZ-A79"/>
                                     <constraint firstItem="97g-jb-hgZ" firstAttribute="centerX" secondItem="UZd-LT-Dff" secondAttribute="centerX" id="Db8-C4-x0G"/>
                                     <constraint firstItem="QIf-dD-Ga4" firstAttribute="top" secondItem="YVf-lp-lCo" secondAttribute="bottom" constant="15" id="FLO-da-5Nt"/>
                                     <constraint firstItem="YVf-lp-lCo" firstAttribute="centerY" secondItem="UZd-LT-Dff" secondAttribute="centerY" id="Mc4-Cy-Hgs"/>
+                                    <constraint firstItem="97g-jb-hgZ" firstAttribute="top" secondItem="07O-jj-hN9" secondAttribute="bottom" constant="34.5" id="Mvg-fy-A0b"/>
                                     <constraint firstItem="YVf-lp-lCo" firstAttribute="top" secondItem="97g-jb-hgZ" secondAttribute="bottom" constant="15" id="QhR-qc-NL3"/>
                                     <constraint firstItem="4Yh-dX-Jtu" firstAttribute="centerX" secondItem="UZd-LT-Dff" secondAttribute="centerX" id="SFI-6t-AGb"/>
                                     <constraint firstItem="QIf-dD-Ga4" firstAttribute="width" secondItem="UZd-LT-Dff" secondAttribute="width" multiplier="0.75" id="TZJ-Uv-hwK"/>
                                     <constraint firstItem="4Yh-dX-Jtu" firstAttribute="width" secondItem="QIf-dD-Ga4" secondAttribute="width" id="Wgg-Kw-w2V"/>
                                     <constraint firstItem="Lap-OA-QMY" firstAttribute="width" secondItem="QIf-dD-Ga4" secondAttribute="width" id="aBR-g1-OrC"/>
+                                    <constraint firstItem="07O-jj-hN9" firstAttribute="centerX" secondItem="UZd-LT-Dff" secondAttribute="centerX" id="acg-Lj-yMi"/>
                                     <constraint firstItem="QIf-dD-Ga4" firstAttribute="centerX" secondItem="UZd-LT-Dff" secondAttribute="centerX" id="jsN-wP-7BH"/>
+                                    <constraint firstItem="oZw-Xr-a3g" firstAttribute="centerX" secondItem="UZd-LT-Dff" secondAttribute="centerX" id="lVt-SN-z5n"/>
                                     <constraint firstAttribute="bottom" secondItem="Lap-OA-QMY" secondAttribute="bottom" constant="15" id="myG-Lq-R2H"/>
                                     <constraint firstItem="YVf-lp-lCo" firstAttribute="centerX" secondItem="UZd-LT-Dff" secondAttribute="centerX" id="sa7-ND-Gjx"/>
                                 </constraints>
@@ -156,6 +188,12 @@
                     <value key="contentSizeForViewInPopover" type="size" width="300" height="400"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="300" height="400"/>
+                    <connections>
+                        <outletCollection property="textFields" destination="4Yh-dX-Jtu" collectionClass="NSMutableArray" id="IkR-YF-Dgy"/>
+                        <outletCollection property="textFields" destination="97g-jb-hgZ" collectionClass="NSMutableArray" id="4zV-rT-AhN"/>
+                        <outletCollection property="textFields" destination="QIf-dD-Ga4" collectionClass="NSMutableArray" id="ICI-gm-egY"/>
+                        <outletCollection property="textFields" destination="Lap-OA-QMY" collectionClass="NSMutableArray" id="SES-zm-gv9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t3X-ka-JnO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
