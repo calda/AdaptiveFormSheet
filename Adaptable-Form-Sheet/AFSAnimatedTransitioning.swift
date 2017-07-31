@@ -42,8 +42,8 @@ public class AFSAnimatedTransitioning : NSObject, UIViewControllerAnimatedTransi
     //MARK: - Animate depending on direction
     
     private func animatePresentation(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let destination = transitionContext.viewController(forKey: UITransitionContextToViewControllerKey) else { return }
-        guard let source = transitionContext.viewController(forKey: UITransitionContextFromViewControllerKey) else { return }
+        guard let destination = transitionContext.viewController(forKey: .to) else { return }
+        guard let source = transitionContext.viewController(forKey: .from) else { return }
         
         let container = transitionContext.containerView
         let duration = self.transitionDuration(using: transitionContext)
@@ -60,8 +60,8 @@ public class AFSAnimatedTransitioning : NSObject, UIViewControllerAnimatedTransi
     }
     
     private func animateDismissal(using transitionContext:UIViewControllerContextTransitioning) {
-        guard let dismissing = transitionContext.viewController(forKey: UITransitionContextFromViewControllerKey) else { return }
-        guard let destination = transitionContext.viewController(forKey: UITransitionContextToViewControllerKey) else { return }
+        guard let dismissing = transitionContext.viewController(forKey: .from) else { return }
+        guard let destination = transitionContext.viewController(forKey: .to) else { return }
         
         let duration = self.transitionDuration(using: transitionContext)
         
