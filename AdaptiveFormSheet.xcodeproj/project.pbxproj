@@ -84,7 +84,7 @@
 		8BB34B9A1D5B704A00D2EA6E = {
 			isa = PBXGroup;
 			children = (
-				8BB34BA61D5B704A00D2EA6E /* Adaptive-Form-Sheet */,
+				8BB34BA61D5B704A00D2EA6E /* AdaptiveFormSheet */,
 				8BB34BB41D5B70B900D2EA6E /* Demo-App */,
 				8BB34BA51D5B704A00D2EA6E /* Products */,
 			);
@@ -99,7 +99,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8BB34BA61D5B704A00D2EA6E /* Adaptive-Form-Sheet */ = {
+		8BB34BA61D5B704A00D2EA6E /* AdaptiveFormSheet */ = {
 			isa = PBXGroup;
 			children = (
 				8BB34BA71D5B704A00D2EA6E /* Adaptable-Form-Sheet.h */,
@@ -108,7 +108,7 @@
 				8B566B291D5B9FF500D58D5F /* AFSAnimatedTransitioning.swift */,
 				8B566B2B1D5BA1BE00D58D5F /* AFSModalViewController.swift */,
 			);
-			name = "Adaptive-Form-Sheet";
+			name = AdaptiveFormSheet;
 			path = "Adaptable-Form-Sheet";
 			sourceTree = "<group>";
 		};
@@ -140,9 +140,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8BB34BA31D5B704A00D2EA6E /* Adaptive-Form-Sheet */ = {
+		8BB34BA31D5B704A00D2EA6E /* AdaptiveFormSheet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8BB34BAC1D5B704A00D2EA6E /* Build configuration list for PBXNativeTarget "Adaptive-Form-Sheet" */;
+			buildConfigurationList = 8BB34BAC1D5B704A00D2EA6E /* Build configuration list for PBXNativeTarget "AdaptiveFormSheet" */;
 			buildPhases = (
 				8BB34B9F1D5B704A00D2EA6E /* Sources */,
 				8BB34BA01D5B704A00D2EA6E /* Frameworks */,
@@ -153,7 +153,7 @@
 			);
 			dependencies = (
 			);
-			name = "Adaptive-Form-Sheet";
+			name = AdaptiveFormSheet;
 			productName = "Adaptable-Form-Sheet";
 			productReference = 8BB34BA41D5B704A00D2EA6E /* AdaptableFormSheet.framework */;
 			productType = "com.apple.product-type.framework";
@@ -198,7 +198,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8BB34B9E1D5B704A00D2EA6E /* Build configuration list for PBXProject "Adaptive-Form-Sheet" */;
+			buildConfigurationList = 8BB34B9E1D5B704A00D2EA6E /* Build configuration list for PBXProject "AdaptiveFormSheet" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -211,7 +211,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8BB34BA31D5B704A00D2EA6E /* Adaptive-Form-Sheet */,
+				8BB34BA31D5B704A00D2EA6E /* AdaptiveFormSheet */,
 				8BB34BB21D5B70B900D2EA6E /* Demo-App */,
 			);
 		};
@@ -263,7 +263,7 @@
 /* Begin PBXTargetDependency section */
 		8B7341491D5B746800C0509E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 8BB34BA31D5B704A00D2EA6E /* Adaptive-Form-Sheet */;
+			target = 8BB34BA31D5B704A00D2EA6E /* AdaptiveFormSheet */;
 			targetProxy = 8B7341481D5B746800C0509E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -455,7 +455,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8BB34B9E1D5B704A00D2EA6E /* Build configuration list for PBXProject "Adaptive-Form-Sheet" */ = {
+		8BB34B9E1D5B704A00D2EA6E /* Build configuration list for PBXProject "AdaptiveFormSheet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BB34BAA1D5B704A00D2EA6E /* Debug */,
@@ -464,7 +464,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8BB34BAC1D5B704A00D2EA6E /* Build configuration list for PBXNativeTarget "Adaptive-Form-Sheet" */ = {
+		8BB34BAC1D5B704A00D2EA6E /* Build configuration list for PBXNativeTarget "AdaptiveFormSheet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8BB34BAD1D5B704A00D2EA6E /* Debug */,
