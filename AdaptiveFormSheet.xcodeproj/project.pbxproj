@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		2E89AB041F2EE69700F0BADF /* AdaptiveFormSheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB34BA41D5B704A00D2EA6E /* AdaptiveFormSheet.framework */; };
 		2E89AB051F2EE69700F0BADF /* AdaptiveFormSheet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB34BA41D5B704A00D2EA6E /* AdaptiveFormSheet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8B566B281D5B9F1300D58D5F /* AFSPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B566B271D5B9F1300D58D5F /* AFSPresentationController.swift */; };
-		8B566B2A1D5B9FF500D58D5F /* AFSAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B566B291D5B9FF500D58D5F /* AFSAnimatedTransitioning.swift */; };
-		8B566B2C1D5BA1BE00D58D5F /* AFSModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B566B2B1D5BA1BE00D58D5F /* AFSModalViewController.swift */; };
-		8BB34BA81D5B704A00D2EA6E /* Adaptable-Form-Sheet.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BB34BA71D5B704A00D2EA6E /* Adaptable-Form-Sheet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2E9824381F2EED6000A59348 /* AFSAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9824341F2EED6000A59348 /* AFSAnimatedTransitioning.swift */; };
+		2E9824391F2EED6000A59348 /* AFSModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9824351F2EED6000A59348 /* AFSModalViewController.swift */; };
+		2E98243A1F2EED6000A59348 /* AFSPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9824361F2EED6000A59348 /* AFSPresentationController.swift */; };
+		2E98243B1F2EED6000A59348 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2E9824371F2EED6000A59348 /* Info.plist */; };
 		8BB34BB61D5B70B900D2EA6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB34BB51D5B70B900D2EA6E /* AppDelegate.swift */; };
 		8BB34BB81D5B70B900D2EA6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB34BB71D5B70B900D2EA6E /* ViewController.swift */; };
 		8BB34BBB1D5B70B900D2EA6E /* Demo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB34BB91D5B70B900D2EA6E /* Demo.storyboard */; };
@@ -46,12 +46,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8B566B271D5B9F1300D58D5F /* AFSPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFSPresentationController.swift; sourceTree = "<group>"; };
-		8B566B291D5B9FF500D58D5F /* AFSAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFSAnimatedTransitioning.swift; sourceTree = "<group>"; };
-		8B566B2B1D5BA1BE00D58D5F /* AFSModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AFSModalViewController.swift; sourceTree = "<group>"; };
+		2E9824341F2EED6000A59348 /* AFSAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AFSAnimatedTransitioning.swift; path = AdaptiveFormSheet/AFSAnimatedTransitioning.swift; sourceTree = SOURCE_ROOT; };
+		2E9824351F2EED6000A59348 /* AFSModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AFSModalViewController.swift; path = AdaptiveFormSheet/AFSModalViewController.swift; sourceTree = SOURCE_ROOT; };
+		2E9824361F2EED6000A59348 /* AFSPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AFSPresentationController.swift; path = AdaptiveFormSheet/AFSPresentationController.swift; sourceTree = SOURCE_ROOT; };
+		2E9824371F2EED6000A59348 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AdaptiveFormSheet/Info.plist; sourceTree = SOURCE_ROOT; };
 		8BB34BA41D5B704A00D2EA6E /* AdaptiveFormSheet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AdaptiveFormSheet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BB34BA71D5B704A00D2EA6E /* Adaptable-Form-Sheet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Adaptable-Form-Sheet.h"; sourceTree = "<group>"; };
-		8BB34BA91D5B704A00D2EA6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BB34BB31D5B70B900D2EA6E /* Demo-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB34BB51D5B70B900D2EA6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BB34BB71D5B70B900D2EA6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,14 +101,13 @@
 		8BB34BA61D5B704A00D2EA6E /* AdaptiveFormSheet */ = {
 			isa = PBXGroup;
 			children = (
-				8BB34BA71D5B704A00D2EA6E /* Adaptable-Form-Sheet.h */,
-				8BB34BA91D5B704A00D2EA6E /* Info.plist */,
-				8B566B271D5B9F1300D58D5F /* AFSPresentationController.swift */,
-				8B566B291D5B9FF500D58D5F /* AFSAnimatedTransitioning.swift */,
-				8B566B2B1D5BA1BE00D58D5F /* AFSModalViewController.swift */,
+				2E9824341F2EED6000A59348 /* AFSAnimatedTransitioning.swift */,
+				2E9824351F2EED6000A59348 /* AFSModalViewController.swift */,
+				2E9824361F2EED6000A59348 /* AFSPresentationController.swift */,
+				2E9824371F2EED6000A59348 /* Info.plist */,
 			);
 			name = AdaptiveFormSheet;
-			path = "Adaptable-Form-Sheet";
+			path = "AdaptiveFormSheet";
 			sourceTree = "<group>";
 		};
 		8BB34BB41D5B70B900D2EA6E /* Demo-App */ = {
@@ -133,7 +131,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BB34BA81D5B704A00D2EA6E /* Adaptable-Form-Sheet.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +187,7 @@
 					8BB34BA31D5B704A00D2EA6E = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = FZ89A5SZ7C;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0830;
 					};
 					8BB34BB21D5B70B900D2EA6E = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -223,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E98243B1F2EED6000A59348 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,9 +241,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B566B2C1D5BA1BE00D58D5F /* AFSModalViewController.swift in Sources */,
-				8B566B281D5B9F1300D58D5F /* AFSPresentationController.swift in Sources */,
-				8B566B2A1D5B9FF500D58D5F /* AFSAnimatedTransitioning.swift in Sources */,
+				2E9824381F2EED6000A59348 /* AFSAnimatedTransitioning.swift in Sources */,
+				2E98243A1F2EED6000A59348 /* AFSPresentationController.swift in Sources */,
+				2E9824391F2EED6000A59348 /* AFSModalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,7 +392,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Adaptable-Form-Sheet/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AdaptiveFormSheet/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tech.calstephens.AdaptiveFormSheet;
@@ -415,7 +413,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Adaptable-Form-Sheet/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/AdaptiveFormSheet/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tech.calstephens.AdaptiveFormSheet;
