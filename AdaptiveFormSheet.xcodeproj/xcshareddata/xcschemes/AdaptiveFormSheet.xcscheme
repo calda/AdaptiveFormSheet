@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8BB34BA31D5B704A00D2EA6E"
-               BuildableName = "AdaptableFormSheet.framework"
+               BuildableName = "AdaptiveFormSheet.framework"
                BlueprintName = "AdaptiveFormSheet"
                ReferencedContainer = "container:AdaptiveFormSheet.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8BB34BA31D5B704A00D2EA6E"
-            BuildableName = "AdaptableFormSheet.framework"
+            BuildableName = "AdaptiveFormSheet.framework"
             BlueprintName = "AdaptiveFormSheet"
             ReferencedContainer = "container:AdaptiveFormSheet.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8BB34BA31D5B704A00D2EA6E"
-            BuildableName = "AdaptableFormSheet.framework"
+            BuildableName = "AdaptiveFormSheet.framework"
             BlueprintName = "AdaptiveFormSheet"
             ReferencedContainer = "container:AdaptiveFormSheet.xcodeproj">
          </BuildableReference>

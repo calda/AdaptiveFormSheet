@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AdaptableFormSheet
+import AdaptiveFormSheet
 
 class ModalViewController : AFSModalViewController {
     
@@ -28,7 +28,7 @@ class ModalViewController : AFSModalViewController {
     
     func nextTextFieldForTag(tag: Int) -> UITextField? {
         var nextTag = tag + 1
-        if nextTag > 4 { nextTag = 1}
+        if nextTag > 2 { nextTag = 1}
         
         return textFields.first(where: { $0.tag == nextTag })
     }

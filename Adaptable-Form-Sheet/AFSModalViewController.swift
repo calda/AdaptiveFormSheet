@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class AFSModalViewController : UIViewController, UIViewControllerTransitioningDelegate {
+open class AFSModalViewController : UIViewController, UIViewControllerTransitioningDelegate {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -25,15 +25,15 @@ public class AFSModalViewController : UIViewController, UIViewControllerTransiti
         self.transitioningDelegate = self
     }
     
-    public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+    open func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         return AFSPresentationController(presentedViewController: presented, presenting: presenting)
     }
     
-    public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return AFSAnimatedTransitioning(direction: .presenting)
     }
     
-    public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return AFSAnimatedTransitioning(direction: .dismissing)
     }
     
