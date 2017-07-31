@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Adaptable-Form-Sheet.xcodeproj">
+      location = "self:/Users/cal/Documents/Xcode/Adaptive-Form-Sheet/Adaptive-Form-Sheet.xcodeproj">
    </FileRef>
 </Workspace>
