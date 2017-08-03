@@ -48,7 +48,7 @@ public class AFSPresentationController : UIPresentationController {
         createScrim()
         
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
-            self.scrim?.alpha = 0.3
+            self.scrim?.alpha = 0.4
         }, completion: { _ in
             self.subscribeToKeyboardNotifications()
         });
