@@ -24,11 +24,15 @@ public class AFSAnimatedTransitioning : NSObject, UIViewControllerAnimatedTransi
         self.direction = direction
     }
     
+    private func options(from transitionContent: UIViewControllerContextTransitioning) -> AFSModalOptionsProvider? {
+        return transitionContent.viewController(forKey: .to) as? AFSModalOptionsProvider
+    }
+    
     
     //MARK: - UIViewControllerAnimatedTransitioning
     
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.5
+        return options(from: transitionContext)?.animationDuration ?? 0.5
     }
     
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -52,8 +56,14 @@ public class AFSAnimatedTransitioning : NSObject, UIViewControllerAnimatedTransi
         destination.view.transform = CGAffineTransform(translationX: 0, y: source.view.frame.height)
         container.addSubview(destination.view)
         
-        UIView.animate(withDuration: duration, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: .allowUserInteraction, animations: {
-            destination.view.transform = CGAffineTransform.identity
+        UIView.animate(
+            withDuration: duration,
+            delay: 0.0,
+            usingSpringWithDamping: 1.0,
+            initialSpringVelocity: 0.0,
+            options: [.allowUserInteraction, .allowAnimatedContent],
+            animations: {
+                destination.view.transform = CGAffineTransform.identity
             }, completion: { success in
                 transitionContext.completeTransition(success)
         })

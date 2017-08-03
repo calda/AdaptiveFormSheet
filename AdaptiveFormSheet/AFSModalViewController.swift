@@ -8,6 +8,22 @@
 
 import UIKit
 
+// MARK: - AFSModalOptionsProvider
+
+public protocol AFSModalOptionsProvider {
+    var backgroundDimmerOpacity: CGFloat? { get }
+    var dismissWhenUserTapsDimmer: Bool? { get }
+    var animationDuration: TimeInterval? { get }
+}
+
+extension AFSModalOptionsProvider {
+    var backgroundDimmerOpacity: CGFloat? { return nil }
+    var dismissWhenUserTapsDimmer: Bool? { return nil }
+    var animationDuration: TimeInterval { return nil }
+}
+
+// MARK: - AFSModalViewController
+
 open class AFSModalViewController : UIViewController, UIViewControllerTransitioningDelegate {
     
     public required init?(coder aDecoder: NSCoder) {

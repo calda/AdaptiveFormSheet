@@ -10,6 +10,10 @@ import UIKit
 
 public class AFSPresentationController : UIPresentationController {
     
+    var options: AFSModalOptionsProvider? {
+        return presentedViewController as? AFSModalOptionsProvider
+    }
+    
     
     //MARK: - Calculate Frame
     
@@ -46,12 +50,11 @@ public class AFSPresentationController : UIPresentationController {
     
     public override func presentationTransitionWillBegin() {
         createScrim()
+        self.subscribeToKeyboardNotifications()
         
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
-            self.scrim?.alpha = 0.4
-        }, completion: { _ in
-            self.subscribeToKeyboardNotifications()
-        });
+            self.scrim?.alpha = self.options?.backgroundDimmerOpacity ?? 0.4
+        }, completion: nil)
     }
     
     public override func dismissalTransitionWillBegin() {
@@ -82,6 +85,10 @@ public class AFSPresentationController : UIPresentationController {
     }
     
     @objc private func scrimTapped() {
+        guard options?.dismissWhenUserTapsDimmer != false else {
+            return
+        }
+        
         self.presentedViewController.dismiss(animated: true, completion: nil)
     }
     
@@ -157,10 +164,12 @@ public class AFSPresentationController : UIPresentationController {
             
         }
         
-        //animate
-        UIView.animate(withDuration: keyboardAnimationDuration.doubleValue) {
-            self.presentedView?.frame = newFrame
-        }
+        UIView.animate(
+            withDuration: keyboardAnimationDuration.doubleValue,
+            delay: 0, options: [.beginFromCurrentState],
+            animations: {
+                self.presentedView?.frame = newFrame
+            }, completion: nil)
     }
     
     private func findFirstResponder(inView view: UIView) -> UIView? {
