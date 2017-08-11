@@ -32,6 +32,7 @@ public class AFSAnimatedTransitioning : NSObject, UIViewControllerAnimatedTransi
     //MARK: - UIViewControllerAnimatedTransitioning
     
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        guard let transitionContext = transitionContext else { return 0.5 }
         return options(from: transitionContext)?.animationDuration ?? 0.5
     }
     

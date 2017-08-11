@@ -33,5 +33,4 @@ class ModalViewController : AFSModalViewController {
         return textFields.first(where: { $0.tag == nextTag })
     }
     
-    
 }

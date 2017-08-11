@@ -16,10 +16,10 @@ public protocol AFSModalOptionsProvider {
     var animationDuration: TimeInterval? { get }
 }
 
-extension AFSModalOptionsProvider {
+public extension AFSModalOptionsProvider {
     var backgroundDimmerOpacity: CGFloat? { return nil }
     var dismissWhenUserTapsDimmer: Bool? { return nil }
-    var animationDuration: TimeInterval { return nil }
+    var animationDuration: TimeInterval? { return nil }
 }
 
 // MARK: - AFSModalViewController
