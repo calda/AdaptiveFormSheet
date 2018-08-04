@@ -10,6 +10,9 @@ import UIKit
 
 public class AFSPresentationController : UIPresentationController {
     
+    
+    var animatedTransitioning: AFSAnimatedTransitioning?
+    
     var options: AFSModalOptionsProvider? {
         return presentedViewController as? AFSModalOptionsProvider
     }
@@ -59,6 +62,8 @@ public class AFSPresentationController : UIPresentationController {
     
     public override func dismissalTransitionWillBegin() {
         self.presentedViewController.view.endEditing(true) //dismiss keyboard
+        self.containerView?.isUserInteractionEnabled = false
+        self.scrim?.isUserInteractionEnabled = false
         
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
             self.scrim?.alpha = 0.0
@@ -69,7 +74,7 @@ public class AFSPresentationController : UIPresentationController {
     }
     
     
-    //MARK: - Scrim
+    //MARK: - Scrim / dimmer
     
     private func createScrim() {
         guard let containerView = self.containerView else { return }
@@ -77,10 +82,12 @@ public class AFSPresentationController : UIPresentationController {
         guard let scrim = self.scrim else { return }
         
         scrim.backgroundColor = UIColor(white: 0.0, alpha: 1.0)
-        scrim.alpha = 0.0
+        scrim.alpha = 0.001
+        scrim.isUserInteractionEnabled = true
         self.containerView?.addSubview(scrim)
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.scrimTapped))
+        tapRecognizer.delaysTouchesBegan = false
         scrim.addGestureRecognizer(tapRecognizer)
     }
     
@@ -89,7 +96,11 @@ public class AFSPresentationController : UIPresentationController {
             return
         }
         
-        self.presentedViewController.dismiss(animated: true, completion: nil)
+        if animatedTransitioning?.isAnimating == true {
+            animatedTransitioning?.cancelTransition()
+        } else {
+            self.presentedViewController.dismiss(animated: true, completion: nil)
+        }
     }
     
     

@@ -22,9 +22,10 @@ public extension AFSModalOptionsProvider {
     var animationDuration: TimeInterval? { return nil }
 }
 
+
 // MARK: - AFSModalViewController
 
-open class AFSModalViewController : UIViewController, UIViewControllerTransitioningDelegate {
+open class AFSModalViewController: UIViewController {
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -36,20 +37,49 @@ open class AFSModalViewController : UIViewController, UIViewControllerTransition
         setupForTransition()
     }
     
-    func setupForTransition() {
+    private func setupForTransition() {
         self.modalPresentationStyle = .custom
         self.transitioningDelegate = self
     }
     
-    open func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+}
+
+
+// MARK: - UIViewControllerTransitioningDelegate
+
+extension AFSModalViewController: UIViewControllerTransitioningDelegate {
+
+    open func presentationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController?,
+        source: UIViewController) -> UIPresentationController?
+    {
         return AFSPresentationController(presentedViewController: presented, presenting: presenting)
     }
     
-    open func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController) -> UIViewControllerAnimatedTransitioning?
+    {
         return AFSAnimatedTransitioning(direction: .presenting)
     }
     
-    open func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    open func animationController(
+        forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning?
+    {
+        return AFSAnimatedTransitioning(direction: .dismissing)
+    }
+    
+    open func interactionControllerForPresentation(
+        using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?
+    {
+        return AFSAnimatedTransitioning(direction: .presenting)
+    }
+    
+    open func interactionControllerForDismissal(
+        using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning?
+    {
         return AFSAnimatedTransitioning(direction: .dismissing)
     }
     
