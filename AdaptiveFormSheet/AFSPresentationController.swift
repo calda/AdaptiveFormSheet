@@ -81,13 +81,13 @@ public class AFSPresentationController : UIPresentationController {
         self.scrim = UIView(frame: containerView.bounds);
         guard let scrim = self.scrim else { return }
         
-        // if presenting a second modal on top of an existing modal, don't use the dimmer
-        if self.presentingViewController is AFSModalOptionsProvider
-            || self.presentingViewController is AFSModalViewController
+        scrim.backgroundColor = UIColor(white: 0.0, alpha: 1.0)
+        
+        // if presenting a second modal on top of an existing modal, let the consumer optionally disable the dimmer
+        if (self.presentingViewController as? AFSModalOptionsProvider)?
+            .disableDimmerWhenPresentingOverExistingModal ?? false
         {
             scrim.backgroundColor = .clear
-        } else {
-            scrim.backgroundColor = UIColor(white: 0.0, alpha: 1.0)
         }
        
         scrim.alpha = 0.001

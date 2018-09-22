@@ -14,12 +14,14 @@ public protocol AFSModalOptionsProvider {
     var backgroundDimmerOpacity: CGFloat? { get }
     var dismissWhenUserTapsDimmer: Bool? { get }
     var animationDuration: TimeInterval? { get }
+    var disableDimmerWhenPresentingOverExistingModal: Bool? { get }
 }
 
 public extension AFSModalOptionsProvider {
     var backgroundDimmerOpacity: CGFloat? { return nil }
     var dismissWhenUserTapsDimmer: Bool? { return nil }
     var animationDuration: TimeInterval? { return nil }
+    var disableDimmerWhenPresentingOverExistingModal: Bool? { return nil }
 }
 
 
