@@ -26,6 +26,11 @@ class ModalViewController : AFSModalViewController {
         nextField?.becomeFirstResponder()
     }
     
+    @IBAction func presentAnotherModal(_ sender: UIButton) {
+        let anotherModal = UIStoryboard(name: "Demo", bundle: nil).instantiateViewController(withIdentifier: "Modal")
+        present(anotherModal, animated: true)
+    }
+    
     func nextTextFieldForTag(tag: Int) -> UITextField? {
         var nextTag = tag + 1
         if nextTag > 2 { nextTag = 1}

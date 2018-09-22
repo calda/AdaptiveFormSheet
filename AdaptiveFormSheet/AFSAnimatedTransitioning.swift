@@ -69,7 +69,9 @@ extension AFSAnimatedTransitioning: UIViewControllerInteractiveTransitioning {
             (to.presentationController as? AFSPresentationController)?.animatedTransitioning = self
             
             to.view.frame = transitionContext.finalFrame(for: to)
-                .translated(by: CGAffineTransform(translationX: 0, y: from.view.frame.height))
+                .translated(by: CGAffineTransform(
+                    translationX: 0,
+                    y: from.presentationContext.view.frame.height))
         }
         
         // Set up the animation
@@ -84,7 +86,9 @@ extension AFSAnimatedTransitioning: UIViewControllerInteractiveTransitioning {
                     destination.view.frame = transitionContext.finalFrame(for: to)
                 case .dismissing:
                     destination.view.frame = transitionContext.finalFrame(for: from)
-                        .translated(by: CGAffineTransform(translationX: 0, y: to.view.frame.height))
+                        .translated(by: CGAffineTransform(
+                            translationX: 0,
+                            y: to.presentationContext.view.frame.height))
                 }
         })
         
@@ -134,7 +138,9 @@ extension AFSAnimatedTransitioning: UIViewControllerAnimatedTransitioning {
         let duration = self.transitionDuration(using: transitionContext)
         
         destination.view.frame = transitionContext.finalFrame(for: destination)
-        destination.view.transform = CGAffineTransform(translationX: 0, y: source.view.frame.height)
+        destination.view.transform = CGAffineTransform(
+            translationX: 0,
+            y: source.presentationContext.view.frame.height)
         container.addSubview(destination.view)
         
         UIView.animate(
@@ -163,7 +169,9 @@ extension AFSAnimatedTransitioning: UIViewControllerAnimatedTransitioning {
             initialSpringVelocity: 0.0,
             options: [.allowUserInteraction],
             animations: {
-                dismissing.view.transform = CGAffineTransform(translationX: 0, y: destination.view.frame.height)
+                dismissing.view.transform = CGAffineTransform(
+                    translationX: 0,
+                    y: destination.presentationContext.view.frame.height)
             }, completion: { success in
                 transitionContext.completeTransition(success)
         })

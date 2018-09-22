@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E230ACC2155C59B00280871 /* UIViewController+PresentationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E230ACB2155C59B00280871 /* UIViewController+PresentationContext.swift */; };
 		2E89AB041F2EE69700F0BADF /* AdaptiveFormSheet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB34BA41D5B704A00D2EA6E /* AdaptiveFormSheet.framework */; };
 		2E89AB051F2EE69700F0BADF /* AdaptiveFormSheet.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB34BA41D5B704A00D2EA6E /* AdaptiveFormSheet.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2E9824381F2EED6000A59348 /* AFSAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E9824341F2EED6000A59348 /* AFSAnimatedTransitioning.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E230ACB2155C59B00280871 /* UIViewController+PresentationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+PresentationContext.swift"; sourceTree = "<group>"; };
 		2E9824341F2EED6000A59348 /* AFSAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AFSAnimatedTransitioning.swift; path = AdaptiveFormSheet/AFSAnimatedTransitioning.swift; sourceTree = SOURCE_ROOT; };
 		2E9824351F2EED6000A59348 /* AFSModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AFSModalViewController.swift; path = AdaptiveFormSheet/AFSModalViewController.swift; sourceTree = SOURCE_ROOT; };
 		2E9824361F2EED6000A59348 /* AFSPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AFSPresentationController.swift; path = AdaptiveFormSheet/AFSPresentationController.swift; sourceTree = SOURCE_ROOT; };
@@ -104,6 +106,7 @@
 				2E9824361F2EED6000A59348 /* AFSPresentationController.swift */,
 				2E9824351F2EED6000A59348 /* AFSModalViewController.swift */,
 				2E9824371F2EED6000A59348 /* Info.plist */,
+				2E230ACB2155C59B00280871 /* UIViewController+PresentationContext.swift */,
 			);
 			path = AdaptiveFormSheet;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			files = (
 				2E9824381F2EED6000A59348 /* AFSAnimatedTransitioning.swift in Sources */,
 				2E98243A1F2EED6000A59348 /* AFSPresentationController.swift in Sources */,
+				2E230ACC2155C59B00280871 /* UIViewController+PresentationContext.swift in Sources */,
 				2E9824391F2EED6000A59348 /* AFSModalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

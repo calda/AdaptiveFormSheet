@@ -34,7 +34,7 @@ public class AFSPresentationController : UIPresentationController {
     }
     
     private func availableSpaceWithPadding(top: CGFloat, bottom: CGFloat) -> CGRect {
-        var available = self.presentingViewController.view.bounds
+        var available = presentingViewController.presentationContext.view.bounds
         available.origin.y += top
         available.size.height -= (top + bottom)
         return available
@@ -81,7 +81,15 @@ public class AFSPresentationController : UIPresentationController {
         self.scrim = UIView(frame: containerView.bounds);
         guard let scrim = self.scrim else { return }
         
-        scrim.backgroundColor = UIColor(white: 0.0, alpha: 1.0)
+        // if presenting a second modal on top of an existing modal, don't use the dimmer
+        if self.presentingViewController is AFSModalOptionsProvider
+            || self.presentingViewController is AFSModalViewController
+        {
+            scrim.backgroundColor = .clear
+        } else {
+            scrim.backgroundColor = UIColor(white: 0.0, alpha: 1.0)
+        }
+       
         scrim.alpha = 0.001
         scrim.isUserInteractionEnabled = true
         self.containerView?.addSubview(scrim)
