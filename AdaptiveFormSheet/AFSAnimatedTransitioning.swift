@@ -16,7 +16,7 @@ public class AFSAnimatedTransitioning: NSObject  {
     }
     
     private let direction: AnimationDirection
-    private var animator: NSObject? /* UIViewPropertyAnimator, only available on iOS >=10 */
+    private var animator: UIViewPropertyAnimator?
     
     public init(direction: AnimationDirection) {
         self.direction = direction
@@ -34,23 +34,17 @@ public class AFSAnimatedTransitioning: NSObject  {
 }
     
 // MARK: - Interactive Transition
-// If iOS >= 10.0, the transition will be interruptable using UIViewPropertyAnimating
     
 extension AFSAnimatedTransitioning: UIViewControllerInteractiveTransitioning {
     
     public func startInteractiveTransition(_ transitionContext: UIViewControllerContextTransitioning) {
-        if #available(iOS 10.0, *) {
-            interruptibleAnimator(using: transitionContext).startAnimation()
-        } else {
-            animateTransition(using: transitionContext)
-        }
+        interruptibleAnimator(using: transitionContext).startAnimation()
     }
     
-    @available(iOS 10.0, *)
     public func interruptibleAnimator(
         using transitionContext: UIViewControllerContextTransitioning) -> UIViewImplicitlyAnimating
     {
-        if let existingAnimator = self.animator as? UIViewPropertyAnimator {
+        if let existingAnimator = self.animator {
             return existingAnimator
         }
         
@@ -102,7 +96,7 @@ extension AFSAnimatedTransitioning: UIViewControllerInteractiveTransitioning {
     }
     
     var isAnimating: Bool {
-        if #available(iOS 10.0, *), let animator = self.animator as? UIViewPropertyAnimator {
+        if let animator = self.animator {
             return animator.isRunning && !animator.isReversed
         }
         
@@ -110,75 +104,12 @@ extension AFSAnimatedTransitioning: UIViewControllerInteractiveTransitioning {
     }
     
     func cancelTransition() {
-        if #available(iOS 10.0, *), let animator = self.animator as? UIViewPropertyAnimator {
+        if let animator = self.animator {
             animator.isReversed = true
         }
     }
     
 }
-
-
-//MARK: - Fallback Presentation
-// If UIViewPropertyAnimator is unavailable, fall back to an uninterruptable presentation
-
-extension AFSAnimatedTransitioning: UIViewControllerAnimatedTransitioning {
-    
-    public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        switch(self.direction) {
-        case .presenting: animatePresentation(using: transitionContext)
-        case .dismissing: animateDismissal(using:transitionContext)
-        }
-    }
-    
-    private func animatePresentation(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let destination = transitionContext.viewController(forKey: .to) else { return }
-        guard let source = transitionContext.viewController(forKey: .from) else { return }
-        
-        let container = transitionContext.containerView
-        let duration = self.transitionDuration(using: transitionContext)
-        
-        destination.view.frame = transitionContext.finalFrame(for: destination)
-        destination.view.transform = CGAffineTransform(
-            translationX: 0,
-            y: source.presentationContext.view.frame.height)
-        container.addSubview(destination.view)
-        
-        UIView.animate(
-            withDuration: duration,
-            delay: 0.0,
-            usingSpringWithDamping: 1.0,
-            initialSpringVelocity: 0.0,
-            options: [.allowUserInteraction, .allowAnimatedContent],
-            animations: {
-                destination.view.transform = CGAffineTransform.identity
-            }, completion: { success in
-                transitionContext.completeTransition(success)
-        })
-    }
-    
-    private func animateDismissal(using transitionContext:UIViewControllerContextTransitioning) {
-        guard let dismissing = transitionContext.viewController(forKey: .from) else { return }
-        guard let destination = transitionContext.viewController(forKey: .to) else { return }
-        
-        let duration = self.transitionDuration(using: transitionContext)
-        
-        UIView.animate(
-            withDuration: duration,
-            delay: 0.0,
-            usingSpringWithDamping: 1.0,
-            initialSpringVelocity: 0.0,
-            options: [.allowUserInteraction],
-            animations: {
-                dismissing.view.transform = CGAffineTransform(
-                    translationX: 0,
-                    y: destination.presentationContext.view.frame.height)
-            }, completion: { success in
-                transitionContext.completeTransition(success)
-        })
-    }
-    
-}
-
 
 // MARK: - CGRect.traslated(by: CGAffineTransform)
 

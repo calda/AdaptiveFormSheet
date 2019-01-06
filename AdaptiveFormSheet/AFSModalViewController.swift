@@ -15,6 +15,7 @@ public protocol AFSModalOptionsProvider {
     var dismissWhenUserTapsDimmer: Bool? { get }
     var animationDuration: TimeInterval? { get }
     var disableDimmerWhenPresentingOverExistingModal: Bool? { get }
+    var initialFirstResponder: UIResponder? { get }
 }
 
 public extension AFSModalOptionsProvider {
@@ -22,6 +23,7 @@ public extension AFSModalOptionsProvider {
     var dismissWhenUserTapsDimmer: Bool? { return nil }
     var animationDuration: TimeInterval? { return nil }
     var disableDimmerWhenPresentingOverExistingModal: Bool? { return nil }
+    var initialFirstResponder: UIResponder? { return nil }
 }
 
 
@@ -57,20 +59,6 @@ extension AFSModalViewController: UIViewControllerTransitioningDelegate {
         source: UIViewController) -> UIPresentationController?
     {
         return AFSPresentationController(presentedViewController: presented, presenting: presenting)
-    }
-    
-    open func animationController(
-        forPresented presented: UIViewController,
-        presenting: UIViewController,
-        source: UIViewController) -> UIViewControllerAnimatedTransitioning?
-    {
-        return AFSAnimatedTransitioning(direction: .presenting)
-    }
-    
-    open func animationController(
-        forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning?
-    {
-        return AFSAnimatedTransitioning(direction: .dismissing)
     }
     
     open func interactionControllerForPresentation(

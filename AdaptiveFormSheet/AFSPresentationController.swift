@@ -58,6 +58,10 @@ public class AFSPresentationController : UIPresentationController {
         presentedViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
             self.scrim?.alpha = self.options?.backgroundDimmerOpacity ?? 0.4
         }, completion: nil)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+            self.options?.initialFirstResponder?.becomeFirstResponder()
+        })
     }
     
     public override func dismissalTransitionWillBegin() {
@@ -183,12 +187,14 @@ public class AFSPresentationController : UIPresentationController {
             
         }
         
-        UIView.animate(
-            withDuration: keyboardAnimationDuration.doubleValue,
-            delay: 0, options: [.beginFromCurrentState],
-            animations: {
-                self.presentedView?.frame = newFrame
+        if self.animatedTransitioning?.isAnimating != true { // don't add a new linear animation while the presentation animation is active
+            UIView.animate(
+                withDuration: keyboardAnimationDuration.doubleValue,
+                delay: 0, options: [.beginFromCurrentState],
+                animations: {
+                    self.presentedView?.frame = newFrame
             }, completion: nil)
+        }
     }
     
     private func findFirstResponder(inView view: UIView) -> UIView? {

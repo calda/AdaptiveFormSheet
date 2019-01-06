@@ -39,3 +39,11 @@ class ModalViewController : AFSModalViewController {
     }
     
 }
+
+extension ModalViewController: AFSModalOptionsProvider {
+    
+    var initialFirstResponder: UIResponder? {
+        return self.textFields.first
+    }
+    
+}
